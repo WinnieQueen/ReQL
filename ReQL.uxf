@@ -18,8 +18,8 @@ _- tableCreated : Boolean_
 _+ main(args : String[]) : void_
 _+ run() : void_
 _+ promptForInput() : String_
-_+ createTable() : Boolean_
-_+ searchFile() : void_
+_+ createSchema() : Boolean_
+_+ searchFile() : String_
 </panel_attributes>
     <additional_attributes/>
   </element>
