@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
-      <y>40</y>
+      <x>170</x>
+      <y>50</y>
       <w>290</w>
       <h>320</h>
     </coordinates>
@@ -18,8 +18,8 @@ _- tableCreated : Boolean_
 _+ main(args : String[]) : void_
 _+ run() : void_
 _+ promptForInput() : String_
-_+ createSchema() : Boolean_
-_+ searchFile() : String_
+_+ createSchema(input : String) : Boolean_
+_+ searchFile(input : String) : String_
 </panel_attributes>
     <additional_attributes/>
   </element>

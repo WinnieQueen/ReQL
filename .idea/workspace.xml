@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReQL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/ReQL.uxf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,10 +82,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="99" y="117" key="CommitChangelistDialog2" timestamp="1587554252256">
+    <state x="99" y="117" key="CommitChangelistDialog2" timestamp="1587562143344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587554252256" />
+    <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587562143344" />
     <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587554314057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
