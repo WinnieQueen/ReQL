@@ -7,18 +7,19 @@
       <x>70</x>
       <y>40</y>
       <w>290</w>
-      <h>400</h>
+      <h>320</h>
     </coordinates>
     <panel_attributes>Program
 -
-_- tableRegexes : HashMap&lt;String, String&gt;_
+_- shcema : HashMap&lt;String, String&gt;_
 _- file : File_
+_- tableCreated : Boolean_
 -
 _+ main(args : String[]) : void_
 _+ run() : void_
 _+ promptForInput() : String_
-_+ createTable() : void_
-_+ searchFile() : void_
+_+ createTable() : Boolean_
+_+ searchFile() : String_
 </panel_attributes>
     <additional_attributes/>
   </element>
