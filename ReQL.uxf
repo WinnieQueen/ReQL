@@ -11,7 +11,7 @@
     </coordinates>
     <panel_attributes>Program
 -
-_- shcema : HashMap&lt;String, String&gt;_
+_- schema : HashMap&lt;String, String&gt;_
 _- file : File_
 _- tableCreated : Boolean_
 -
