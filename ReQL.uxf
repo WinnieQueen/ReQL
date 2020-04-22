@@ -4,12 +4,12 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>50</y>
+      <x>350</x>
+      <y>20</y>
       <w>320</w>
       <h>320</h>
     </coordinates>
-    <panel_attributes>Program
+    <panel_attributes>ReQL
 -
 _- schema : HashMap&lt;String, String&gt;_
 _- file : File_
@@ -27,6 +27,21 @@ _+ createSchema(input : String) : Boolean_
 _+ searchFile(input : String) : Boolean_
 _- createHelp() : void_
 _- selectHelp() : void_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>320</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Program
+-
+-
+_+ main(args : String[]) : void_
 </panel_attributes>
     <additional_attributes/>
   </element>

@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReQL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/ReQL.uxf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProgramTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Program.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -133,10 +131,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587568002923" />
-    <state x="176" y="255" width="607" height="536" key="find.popup" timestamp="1587554255084">
+    <state x="176" y="255" width="607" height="536" key="find.popup" timestamp="1587569662535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="176" y="255" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587554255084" />
+    <state x="176" y="255" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587569662535" />
     <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1587563882764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

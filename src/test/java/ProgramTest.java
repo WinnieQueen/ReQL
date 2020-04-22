@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
+    private ReQL reQL = new ReQL();
+
     @Test
     void promptForInput_shouldReturnSpecial() {
+        reQL.promptForInput();
     }
 
     @Test
