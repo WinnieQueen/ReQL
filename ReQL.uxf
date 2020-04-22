@@ -6,7 +6,7 @@
     <coordinates>
       <x>170</x>
       <y>50</y>
-      <w>290</w>
+      <w>320</w>
       <h>320</h>
     </coordinates>
     <panel_attributes>Program
@@ -14,12 +14,19 @@
 _- schema : HashMap&lt;String, String&gt;_
 _- file : File_
 _- tableCreated : Boolean_
+_- reader : BufferedReader_
+_- running : Boolean_
+_- valid : Boolean_
+
 -
 _+ main(args : String[]) : void_
 _+ run() : void_
+_+ checkForSpecialInput(input : String) : Boolean_
 _+ promptForInput() : String_
 _+ createSchema(input : String) : Boolean_
-_+ searchFile(input : String) : String_
+_+ searchFile(input : String) : Boolean_
+_- createHelp() : void_
+_- selectHelp() : void_
 </panel_attributes>
     <additional_attributes/>
   </element>

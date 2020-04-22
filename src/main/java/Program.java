@@ -1,4 +1,6 @@
-import java.io.File;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 
 public class Program {
@@ -6,56 +8,122 @@ public class Program {
     private static HashMap<String, String> schema = new HashMap<>();
     private static File file;
     private static Boolean tableCreated = false;
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static Boolean running = true;
+    private static Boolean valid = false;
 
     public static void main(String[] args) {
+        System.out.println("NOTE: Type 'QUIT' at any time to end the program.");
+        System.out.println("NOTE: Type 'HELP 1' at any time to get help with CREATE formatting.");
+        System.out.println("NOTE: Type 'HELP 2' at any time to get help with SELECT formatting.");
+        System.out.println("NOTE: Type 'NEW' at any time to create a new schema");
         run();
     }
 
     public static void run() {
-        Boolean valid = false;
-        if (tableCreated) {
-            valid = false;
-            do {
-                System.out.println("Enter a search:");
-                String result = promptForInput();
-                searchFile(result);
-                if (!createSchema(result)) {
-                    System.out.println("Sorry, something went wrong while processing your search. Please try again.");
-                    valid = false;
-                } else {
-                    valid = true;
-                }
-            } while (!valid);
-        } else {
-            valid = false;
+        do {
             if (tableCreated) {
+                valid = false;
                 do {
-                    System.out.println("Please create your schema:");
+                    System.out.println("Enter a search (end with ; to end the input):");
                     String result = promptForInput();
-                    createSchema(result);
-                    if (!createSchema(result)) {
-                        System.out.println("Sorry, something went wrong while creating the table. Please try again.");
-                        valid = false;
-                    } else {
-                        valid = true;
+                    if (!result.equals("SPECIAL")) {
+                        if (!searchFile(result)) {
+                            System.out.println("Sorry, something went wrong while processing your search. Please try again.");
+                            valid = false;
+                        } else {
+                            valid = true;
+                        }
+                    }
+                } while (!valid);
+            } else {
+                valid = false;
+                do {
+                    System.out.println("Please create your schema (end with ; to end the input):");
+                    String result = promptForInput();
+                    if (!result.equals("SPECIAL")) {
+                        if (!createSchema(result)) {
+                            System.out.println("Sorry, something went wrong while creating the table. Please try again.");
+                            valid = false;
+                        } else {
+                            tableCreated = true;
+                            valid = true;
+                        }
                     }
                 } while (!valid);
             }
-        }
+        } while (running);
+        System.out.println("Goodbye!");
     }
 
-        public static String promptForInput () {
-
-            return null;
+    public static Boolean checkForSpecialInput(String input) {
+        Boolean wasSpecial = true;
+        if (input.toUpperCase().equals("QUIT")) {
+            running = false;
+        } else if (input.toUpperCase().equals("HELP 1")) {
+            createHelp();
+        } else if (input.toUpperCase().equals("HELP 2")) {
+            selectHelp();
+        } else if (input.toUpperCase().equals("NEW")) {
+            System.out.println("WARNING: this will override your current table. Do you wish to continue? (y/n) ");
+            promptForInput();
+            valid = true;
+            tableCreated = false;
+        } else {
+            wasSpecial = false;
         }
-
-        public static Boolean createSchema (String input){
-
-            return false;
-        }
-
-        public static Boolean searchFile (String input) {
-
-            return null;
-        }
+        return wasSpecial;
     }
+
+    public static String promptForInput() {
+        String input = "";
+        try {
+            do {
+                System.out.print(">");
+                input += reader.readLine().trim() + " ";
+                if(!input.trim().equals("")) {
+                    if (input.charAt(input.length() - 2) == ';') {
+                        break;
+                    } else if (checkForSpecialInput(input.trim())) {
+                        input = "SPECIAL";
+                        break;
+                    }
+                } else {
+                    input = "";
+                    break;
+                }
+            } while (true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return input.trim();
+    }
+
+    private static void createHelp() {
+        System.out.println("CREATE TABLE '<table-name>' (<col-names-list>) : line format /<line-format-regex> file '<file-path>");
+        System.out.println("\t'table-name' needs one or more alpha numeric characters, always beginning with a letter. It cannot contain underscores, spaces, or special characters");
+        System.out.println("\t'col-names-list' refers to a comma separated list of column names corresponding to regex groupings in the line format expression.");
+        System.out.println("\t'line-format-expression' is the expression applied to each file line. There MUST be an expression for every column name.");
+        System.out.println("\t'file-path' is the path to the file on disk where the actual data is stored");
+    }
+
+    private static void selectHelp() {
+        System.out.println("SELECT <col-names> FROM <table-name> WHERE <criteria>");
+        System.out.println("\t'col-names' refers to a comma separated list of column names to be included in the result set");
+        System.out.println("\t'table-name' refers to the name of the table to query (maps to the file from the create statement)");
+        System.out.println("\t'criteria' needs: col-name <comparison> <value> [<additional-criteria>]");
+        System.out.println("\t\t'comparison' refers to =, <, >, <= or >=");
+        System.out.println("\t\t'value' is whatever you want to compare the column's data to");
+        System.out.println("\t'additional-criteria is formatted just like 'criteria' with either an 'AND' or an 'OR' before it");
+    }
+
+    public static Boolean createSchema(String input) {
+
+        return false;
+    }
+
+    public static Boolean searchFile(String input) {
+
+        return false;
+    }
+}

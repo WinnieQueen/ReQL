@@ -5,14 +5,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgramTest {
 
     @Test
-    void promptForInput() {
+    void promptForInput_shouldReturnSpecial() {
     }
 
     @Test
-    void createSchema() {
+    void promptForInput_shouldReturnSameString() {
     }
 
     @Test
-    void searchFile() {
+    void createSchema_shouldReturnTrue() {
+    }
+
+    @Test
+    void createSchema_shouldReturnFalse() {
+    }
+
+    @Test
+    void searchFile_shouldReturnTrue() {
+    }
+
+    @Test
+    void searchFile_shouldReturnFalse() {
+    }
+
+    @Test
+    void checkForSpecialInput_shouldReturnTrue() {
+    }
+
+    @Test
+    void checkForSpecialInput_shouldReturnFalse() {
     }
 }

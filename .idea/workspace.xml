@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReQL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/ReQL.uxf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProgramTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Program.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -51,7 +54,14 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Program">
+    <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Program" />
+      <module name="ReQL" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProgramTest.promptForInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
@@ -64,6 +74,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Program" />
         <item itemvalue="JUnit.ProgramTest.promptForInput" />
       </list>
     </recent_temporary>
@@ -86,13 +97,49 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587562143344" />
-    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587554314057">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1587567757546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587554314057" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587567757546" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1587567757546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587567757546" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1587567757546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587567757546" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1587567757546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587567757546" />
+    <state width="914" height="347" key="GridCell.Tab.1.bottom" timestamp="1587566213186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
+    <state width="914" height="347" key="GridCell.Tab.1.center" timestamp="1587566213186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
+    <state width="914" height="347" key="GridCell.Tab.1.left" timestamp="1587566213186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
+    <state width="914" height="347" key="GridCell.Tab.1.right" timestamp="1587566213186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
+    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587568002923">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587568002923" />
     <state x="176" y="255" width="607" height="536" key="find.popup" timestamp="1587554255084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="176" y="255" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587554255084" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1587563882764">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587563882764" />
   </component>
 </project>
