@@ -19,7 +19,7 @@ _+ main(args : String[]) : void_
 _+ run() : void_
 _+ promptForInput() : String_
 _+ createTable() : Boolean_
-_+ searchFile() : String_
+_+ searchFile() : void_
 </panel_attributes>
     <additional_attributes/>
   </element>
