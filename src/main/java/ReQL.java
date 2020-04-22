@@ -8,7 +8,7 @@ public class ReQL {
     private HashMap<String, String> schema = new HashMap<>();
     private File file;
     private Boolean tableCreated = false;
-    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private Boolean running = true;
     private Boolean valid = false;
 
@@ -62,9 +62,17 @@ public class ReQL {
             selectHelp();
         } else if (input.toUpperCase().equals("NEW")) {
             System.out.println("WARNING: this will override your current table. Do you wish to continue? (y/n) ");
-            promptForInput();
-            valid = true;
-            tableCreated = false;
+            try {
+                input = reader.readLine();
+                if (input.equals("y")) {
+                    valid = true;
+                    tableCreated = false;
+                } else {
+                    System.out.println("Cancelling override.");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             wasSpecial = false;
         }
@@ -77,7 +85,7 @@ public class ReQL {
             do {
                 System.out.print(">");
                 input += reader.readLine().trim() + " ";
-                if(!input.trim().equals("")) {
+                if (!input.trim().equals("")) {
                     if (input.charAt(input.length() - 2) == ';') {
                         break;
                     } else if (checkForSpecialInput(input.trim())) {
