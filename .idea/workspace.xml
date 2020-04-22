@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProgramTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ProgramTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ProgramTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

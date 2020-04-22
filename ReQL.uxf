@@ -4,37 +4,36 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>20</y>
+      <x>430</x>
+      <y>40</y>
       <w>320</w>
       <h>320</h>
     </coordinates>
     <panel_attributes>ReQL
 -
-_- schema : HashMap&lt;String, String&gt;_
-_- file : File_
-_- tableCreated : Boolean_
-_- reader : BufferedReader_
-_- running : Boolean_
-_- valid : Boolean_
+- schema : HashMap&lt;String, String&gt;_
+- file : File_
+- tableCreated : Boolean_
++ reader : BufferedReader_
+- running : Boolean_
+- valid : Boolean_
 
 -
-_+ main(args : String[]) : void_
-_+ run() : void_
-_+ checkForSpecialInput(input : String) : Boolean_
-_+ promptForInput() : String_
-_+ createSchema(input : String) : Boolean_
-_+ searchFile(input : String) : Boolean_
-_- createHelp() : void_
-_- selectHelp() : void_
-</panel_attributes>
++ main(args : String[]) : void_
++ run() : void_
++ checkForSpecialInput(input : String) : Boolean_
++ promptForInput() : String_
++ createSchema(input : String) : Boolean_
++ searchFile(input : String) : Boolean_
+- createHelp() : void_
+- selectHelp() : void_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
+      <x>0</x>
+      <y>40</y>
       <w>320</w>
       <h>320</h>
     </coordinates>
@@ -44,5 +43,17 @@ _- selectHelp() : void_
 _+ main(args : String[]) : void_
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>170</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
 </diagram>
