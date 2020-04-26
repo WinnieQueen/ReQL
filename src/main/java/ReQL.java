@@ -84,7 +84,9 @@ public class ReQL {
         try {
             do {
                 System.out.print(">");
-                input += reader.readLine().trim() + " ";
+                String ns = reader.readLine().trim();
+                if(!ns.isEmpty())
+                input += ns + " ";
                 if (!input.trim().equals("")) {
                     if (input.charAt(input.length() - 2) == ';') {
                         break;
@@ -100,14 +102,15 @@ public class ReQL {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(input.trim());
         return input.trim();
     }
 
     private void createHelp() {
-        System.out.println("CREATE TABLE '<table-name>' (<col-names-list>) : line format /<line-format-regex> file '<file-path>");
+        System.out.println("CREATE TABLE '<table-name>' (<col-names-list>) : line format /<line-format-regex>/ file '<file-path>");
         System.out.println("\t'table-name' needs one or more alpha numeric characters, always beginning with a letter. It cannot contain underscores, spaces, or special characters");
         System.out.println("\t'col-names-list' refers to a comma separated list of column names corresponding to regex groupings in the line format expression.");
-        System.out.println("\t'line-format-expression' is the expression applied to each file line. There MUST be an expression for every column name.");
+        System.out.println("\t'line-format-expression' is the expression applied to each file line. There MUST be an expression for every column name. They MUST be wrapped in parentheses, and CANNOT contain parentheses. MUST start and end with a forward-slash (/)");
         System.out.println("\t'file-path' is the path to the file on disk where the actual data is stored");
     }
 
@@ -115,15 +118,39 @@ public class ReQL {
         System.out.println("SELECT <col-names> FROM <table-name> WHERE <criteria>");
         System.out.println("\t'col-names' refers to a comma separated list of column names to be included in the result set");
         System.out.println("\t'table-name' refers to the name of the table to query (maps to the file from the create statement)");
-        System.out.println("\t'criteria' needs: col-name <comparison> <value> [<additional-criteria>]");
+        System.out.println("\t'criteria' needs: col-name <comparison> <value>");
         System.out.println("\t\t'comparison' refers to =, <, >, <= or >=");
         System.out.println("\t\t'value' is whatever you want to compare the column's data to");
-        System.out.println("\t'additional-criteria is formatted just like 'criteria' with either an 'AND' or an 'OR' before it");
     }
 
     public Boolean createSchema(String input) {
+        // /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\[.*?\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/
+        boolean validSchema = false;
+        if(input != null && !input.isEmpty() && !input.contains("\\(") && !input.contains("\\)")) {
+            if(input.matches("^CREATE TABLE '(([a-z]|[A-Z])+\\d*)+' \\(\\w+(, \\w+)*\\) : line format \\/.+\\/ file '.+';$")) {
+                grabTableName(input);
+            }
+            validSchema = true;
+        }
+        return validSchema;
+    }
 
-        return false;
+    public String grabTableName(String input) {
+        int indexOfLastQuote = input.indexOf('\'', 14);
+        String tableName = input.substring(14, indexOfLastQuote);
+        return tableName;
+    }
+
+    public String[] grabRegexps(String input) {
+        return null;
+    }
+
+    public String grabFilePath(String input) {
+        return "";
+    }
+
+    public String[] grabColumnNames(String input) {
+        return null;
     }
 
     public Boolean searchFile(String input) {

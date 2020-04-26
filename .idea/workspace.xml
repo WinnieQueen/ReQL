@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="" />
+    <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReQL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/ReQL.uxf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ReQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProgramTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +54,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramTest">
+  <component name="RunManager" selected="JUnit.ProgramTest.grabTableName_shouldReturnMyyyyyTable">
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Program" />
       <module name="ReQL" />
@@ -65,11 +71,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.promptForInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramTest.grabTableName_shouldReturnMyyyyyTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="promptForInput" />
+      <option name="METHOD_NAME" value="grabTableName_shouldReturnMyyyyyTable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -97,11 +103,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProgramTest.grabTableName_shouldReturnMyyyyyTable" />
+        <item itemvalue="Application.Program" />
         <item itemvalue="JUnit.ProgramTest" />
         <item itemvalue="JUnit.ProgramTest.promptForInput_shouldReturnWholeString" />
         <item itemvalue="JUnit.ProgramTest.promptForInput_shouldReturnSpecial" />
-        <item itemvalue="Application.Program" />
-        <item itemvalue="JUnit.ProgramTest.promptForInput" />
       </list>
     </recent_temporary>
   </component>
@@ -123,22 +129,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587562143344" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1587571154504">
+    <state width="914" height="216" key="GridCell.Tab.0.bottom" timestamp="1587890596167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587571154504" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1587571154504">
+    <state width="914" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
+    <state width="914" height="216" key="GridCell.Tab.0.center" timestamp="1587890596167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587571154504" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1587571154504">
+    <state width="914" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
+    <state width="914" height="216" key="GridCell.Tab.0.left" timestamp="1587890596167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587571154504" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1587571154504">
+    <state width="914" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
+    <state width="914" height="216" key="GridCell.Tab.0.right" timestamp="1587890596167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587571154504" />
+    <state width="914" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
     <state width="914" height="347" key="GridCell.Tab.1.bottom" timestamp="1587566213186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -159,6 +165,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587568002923" />
+    <state x="862" y="-11" width="812" height="782" maximized="true" key="dock-window-1" timestamp="1587891380368">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="862" y="-11" width="812" height="782" maximized="true" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1587891380368" />
+    <state x="953" y="0" width="974" height="1047" key="dock-window-2" timestamp="1587892019341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="953" y="0" width="974" height="1047" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1587892019341" />
     <state x="176" y="255" width="607" height="536" key="find.popup" timestamp="1587569662535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

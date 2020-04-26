@@ -45,11 +45,70 @@ class ProgramTest {
     }
 
     @Test
-    void createSchema_shouldReturnTrue() {
+    void grabTableName_shouldReturnMyyyyyTable() {
+        String expected = "MyyyyyTable";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        String actual = reQL.grabTableName(toPassIn);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void createSchema_shouldReturnFalse() {
+    void grabRegexps() {
+        String[] expected = {"/^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/", "([0-9]{4}-[0-9]{2}-[0-9]{2})", "([0-9]{2}:[0-9]{2}:[0-9]{2})", "([A-Z]+)", "(\\[.*?\\])", "([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3})", "(.+)", "(.*)"};
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        String[] actual = reQL.grabRegexps(toPassIn);
+        assertEquals(expected.length, actual.length);
+        for(int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], actual[i]);
+        }
+    }
+
+    @Test
+    void grabFilePath() {
+        String expected = "C:/users/access_log.txt";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        String actual = reQL.grabFilePath(toPassIn);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void grabColumnNames() {
+        String[] expected = {"date", "time", "log_level", "src_ip", "username", "msg"};
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        String[] actual = reQL.grabColumnNames(toPassIn);
+        assertEquals(expected.length, actual.length);
+        for(int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], actual[i]);
+        }
+    }
+
+    @Test
+    void createSchema_shouldReturnTrue() {
+        boolean expected = true;
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        boolean actual = reQL.createSchema(toPassIn);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void createSchema_hasTooManyRegex() {
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        boolean actual = reQL.createSchema(toPassIn);
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void createSchema_hasTooManyColumns() {
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg, newColumn, newColumn2) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
+        boolean actual = reQL.createSchema(toPassIn);
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void createSchema_hasBadFormat() {
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format ^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$ file 'C:/users/access_log.txt';";
+        boolean actual = reQL.createSchema(toPassIn);
+        assertEquals(false, actual);
     }
 
     @Test
