@@ -84,10 +84,9 @@ class ProgramTest {
 
     @Test
     void createSchema_shouldReturnTrue() {
-        boolean expected = true;
         String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'C:/users/access_log.txt';";
         boolean actual = reQL.createSchema(toPassIn);
-        assertEquals(expected, actual);
+        assertEquals(true, actual);
     }
 
     @Test

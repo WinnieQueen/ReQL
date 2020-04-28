@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cd2700ca-b3e8-457a-a653-664b7e7cb674" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReQL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/ReQL.uxf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ReQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProgramTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ReQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ProgramTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ProgramTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,19 +54,43 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramTest.grabTableName_shouldReturnMyyyyyTable">
-    <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Program" />
+  <component name="RunManager" selected="JUnit.ProgramTest.grabColumnNames">
+    <configuration name="ProgramTest.createSchema_shouldReturnTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
+      <option name="METHOD_NAME" value="createSchema_shouldReturnTrue" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramTest.grabColumnNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="grabColumnNames" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProgramTest.grabFilePath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReQL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
+      <option name="METHOD_NAME" value="grabFilePath" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProgramTest.grabRegexps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReQL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
+      <option name="METHOD_NAME" value="grabRegexps" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,33 +105,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.promptForInput_shouldReturnSpecial" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ReQL" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="promptForInput_shouldReturnSpecial" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProgramTest.promptForInput_shouldReturnWholeString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ReQL" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="promptForInput_shouldReturnWholeString" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProgramTest.grabColumnNames" />
+        <item itemvalue="JUnit.ProgramTest.grabFilePath" />
+        <item itemvalue="JUnit.ProgramTest.grabRegexps" />
+        <item itemvalue="JUnit.ProgramTest.createSchema_shouldReturnTrue" />
         <item itemvalue="JUnit.ProgramTest.grabTableName_shouldReturnMyyyyyTable" />
-        <item itemvalue="Application.Program" />
-        <item itemvalue="JUnit.ProgramTest" />
-        <item itemvalue="JUnit.ProgramTest.promptForInput_shouldReturnWholeString" />
-        <item itemvalue="JUnit.ProgramTest.promptForInput_shouldReturnSpecial" />
       </list>
     </recent_temporary>
   </component>
@@ -125,42 +129,46 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="99" y="117" key="CommitChangelistDialog2" timestamp="1587562143344">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1588006303268">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587562143344" />
-    <state width="914" height="216" key="GridCell.Tab.0.bottom" timestamp="1587890596167">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588006303268" />
+    <state x="99" y="117" key="CommitChangelistDialog2" timestamp="1588005618574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
-    <state width="914" height="216" key="GridCell.Tab.0.center" timestamp="1587890596167">
+    <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588005618574" />
+    <state width="914" height="216" key="GridCell.Tab.0.bottom" timestamp="1588064481622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
-    <state width="914" height="216" key="GridCell.Tab.0.left" timestamp="1587890596167">
+    <state width="914" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
+    <state width="914" height="216" key="GridCell.Tab.0.center" timestamp="1588064481622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
-    <state width="914" height="216" key="GridCell.Tab.0.right" timestamp="1587890596167">
+    <state width="914" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
+    <state width="914" height="216" key="GridCell.Tab.0.left" timestamp="1588064481622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587890596167" />
-    <state width="914" height="347" key="GridCell.Tab.1.bottom" timestamp="1587566213186">
+    <state width="914" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
+    <state width="914" height="216" key="GridCell.Tab.0.right" timestamp="1588064481622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
-    <state width="914" height="347" key="GridCell.Tab.1.center" timestamp="1587566213186">
+    <state width="914" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1588005359521">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
-    <state width="914" height="347" key="GridCell.Tab.1.left" timestamp="1587566213186">
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588005359521" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1588005359520">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
-    <state width="914" height="347" key="GridCell.Tab.1.right" timestamp="1587566213186">
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588005359520" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1588005359520">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587566213186" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588005359520" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1588005359521">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588005359521" />
     <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587568002923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -177,6 +185,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="176" y="255" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587569662535" />
+    <state x="908" y="218" width="1012" height="610" key="new project wizard" timestamp="1588008342979">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="908" y="218" width="1012" height="610" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588008342979" />
     <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1587563882764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ReQL {
     private HashMap<String, String> schema = new HashMap<>();
@@ -85,8 +86,8 @@ public class ReQL {
             do {
                 System.out.print(">");
                 String ns = reader.readLine().trim();
-                if(!ns.isEmpty())
-                input += ns + " ";
+                if (!ns.isEmpty())
+                    input += ns + " ";
                 if (!input.trim().equals("")) {
                     if (input.charAt(input.length() - 2) == ';') {
                         break;
@@ -126,11 +127,25 @@ public class ReQL {
     public Boolean createSchema(String input) {
         // /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\[.*?\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/
         boolean validSchema = false;
-        if(input != null && !input.isEmpty() && !input.contains("\\(") && !input.contains("\\)")) {
-            if(input.matches("^CREATE TABLE '(([a-z]|[A-Z])+\\d*)+' \\(\\w+(, \\w+)*\\) : line format \\/.+\\/ file '.+';$")) {
-                grabTableName(input);
+        if (input != null && !input.isEmpty() && !input.contains("\\(") && !input.contains("\\)")) {
+            if (input.matches("^CREATE TABLE '(([a-z]|[A-Z])+\\d*)+' \\(\\w+(, \\w+)*\\) : line format \\/.+\\/ file '.+';$")) {
+                String[] regexps = grabRegexps(input);
+                String[] columnNames = grabColumnNames(input);
+                if (regexps.length == columnNames.length) {
+                    validSchema = true;
+                    schema.put("tableName", grabTableName(input));
+                    schema.put("filePath", grabFilePath(input));
+                    for (int i = 0; i < regexps.length; i++) {
+                        if (columnNames[i] == "tableName" || columnNames[i] == "filePath") {
+                            schema.clear();
+                            validSchema = false;
+                            break;
+                        } else {
+                            schema.put(columnNames[i], regexps[i]);
+                        }
+                    }
+                }
             }
-            validSchema = true;
         }
         return validSchema;
     }
@@ -142,15 +157,29 @@ public class ReQL {
     }
 
     public String[] grabRegexps(String input) {
-        return null;
+        int firstIndex = input.indexOf("line format /") + 13;
+        int lastIndex = input.indexOf("/", firstIndex);
+        String regexps = input.substring(firstIndex, lastIndex);
+        String[] regexpsArr = regexps.split("\\)[^\\(]*\\(");
+        for(int i = 0; i < regexpsArr.length; i++) {
+            regexpsArr[i] = regexpsArr[i].replace(")", "");
+        }
+        return regexpsArr;
     }
 
     public String grabFilePath(String input) {
-        return "";
+        int firstIndex = input.indexOf("file '") + 6;
+        int lastIndex = input.indexOf("'", firstIndex);
+        String fileName = input.substring(firstIndex, lastIndex);
+        return fileName;
     }
 
     public String[] grabColumnNames(String input) {
-        return null;
+        int firstIndex = input.indexOf("(") + 1;
+        int lastIndex = input.indexOf(")", firstIndex);
+        String columns = input.substring(firstIndex, lastIndex);
+        String[] columnsArr = columns.split(", ");
+        return columnsArr;
     }
 
     public Boolean searchFile(String input) {
