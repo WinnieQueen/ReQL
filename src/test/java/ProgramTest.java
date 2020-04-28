@@ -53,15 +53,15 @@ class ProgramTest {
 
     @Test
     void grabTableName_shouldReturnTrue() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         Boolean actual = reQL.grabTableName(toPassIn);
         assertEquals(true, actual);
     }
 
     @Test
     void grabRegexps() {
-        String[] expected = {"[0-9]{4}-[0-9]{2}-[0-9]{2}", "[0-9]{2}:[0-9]{2}:[0-9]{2}", "\\[.*?\\]", "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}", ".+", ".*"};
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String[] expected = {"[0-9]{4}-[0-9]{2}-[0-9]{2}", "[0-9]{2}:[0-9]{2}:[0-9]{2}", "\\[.*?\\]", "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}", ".+", ".*"};
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         String[] actual = reQL.grabRegexps(toPassIn);
         assertEquals(expected.length, actual.length);
         for (int i = 0; i < expected.length; i++) {
@@ -71,7 +71,7 @@ class ProgramTest {
 
     @Test
     void grabFilePath() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         Boolean actual = reQL.grabFilePath(toPassIn);
         assertEquals(true, actual);
     }
@@ -79,7 +79,7 @@ class ProgramTest {
     @Test
     void grabColumnNames() {
         String[] expected = {"date", "time", "log_level", "src_ip", "username", "msg"};
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         String[] actual = reQL.grabColumnNames(toPassIn);
         assertEquals(expected.length, actual.length);
         for (int i = 0; i < expected.length; i++) {
@@ -89,28 +89,28 @@ class ProgramTest {
 
     @Test
     void createSchema_shouldReturnTrue() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         boolean actual = reQL.createSchema(toPassIn);
         assertEquals(true, actual);
     }
 
     @Test
     void createSchema_hasTooManyRegex() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         boolean actual = reQL.createSchema(toPassIn);
         assertEquals(false, actual);
     }
 
     @Test
     void createSchema_hasTooManyColumns() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg, newColumn, newColumn2) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg, newColumn, newColumn2) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';";
         boolean actual = reQL.createSchema(toPassIn);
         assertEquals(false, actual);
     }
 
     @Test
     void createSchema_hasBadFormat() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format ^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$ file 'access_log.txt';";
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format ^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$ file 'access_log.txt';";
         boolean actual = reQL.createSchema(toPassIn);
         assertEquals(false, actual);
     }
@@ -118,19 +118,46 @@ class ProgramTest {
     @Test
     void searchFile_shouldReturnTrue() {
         setup();
-        assertEquals(true, reQL.searchFile("SELECT date, time, src_ip FROM mylog WHERE date >= '2019-01-01'"));
+        reQL.createSchema("CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';");
+        assertEquals(true, reQL.searchFile("SELECT date, time, src_ip FROM MyyyyyTable WHERE date >= '2019-01-01'"));
     }
 
     @Test
     void searchFile_shouldReturnFalse() {
+        setup();
+        reQL.createSchema("CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,4}) (.+) : (.*)$/ file 'access_log.txt';");
+        assertEquals(false, reQL.searchFile("SELEC date, time, src_ip FROM MyyyyyTable WHERE date >= '2019-01-01'"));
     }
 
     @Test
-    void checkForSpecialInput_shouldReturnTrue() {
+    void checkForSpecialInput_help1ShouldReturnTrue() {
+        Boolean actual = reQL.checkForSpecialInput("Help 1");
+        assertEquals(true, actual);
     }
 
     @Test
-    void checkForSpecialInput_shouldReturnFalse() {
+    void checkForSpecialInput_help2ShouldReturnTrue() {
+        Boolean actual = reQL.checkForSpecialInput("Help 2");
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void checkForSpecialInput_quitShouldReturnTrue() {
+        Boolean actual = reQL.checkForSpecialInput("quit");
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void checkForSpecialInput_newShouldReturnTrue() {
+        reQL.reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream("y".getBytes())));
+        Boolean actual = reQL.checkForSpecialInput("new");
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void checkForSpecialInput_helpShouldReturnFalse() {
+        Boolean actual = reQL.checkForSpecialInput("Help");
+        assertEquals(false, actual);
     }
 
     @Test

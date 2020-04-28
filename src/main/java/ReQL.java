@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ReQL {
-    private HashMap<String, String> schema = new HashMap<>();
+    private LinkedHashMap<String, String> schema = new LinkedHashMap<>();
     private String lineRegex = "";
+    private String filePath = "";
+    private String tableName = "";
     private Boolean tableCreated = false;
     public BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private Boolean running = true;
@@ -158,7 +161,7 @@ public class ReQL {
         int indexOfLastQuote = input.indexOf('\'', 14);
         String tableName = input.substring(14, indexOfLastQuote);
         if (!tableName.trim().isEmpty() && tableName != null) {
-            schema.put("tableName", tableName);
+            this.tableName = tableName;
             validName = true;
         }
         return validName;
@@ -175,7 +178,6 @@ public class ReQL {
             regexpsArr[i] = regexpsArr[i].replace("(", "");
             regexpsArr[i] = regexpsArr[i].replace("^", "");
             regexpsArr[i] = regexpsArr[i].replace("$", "");
-            System.out.println(i + " " + regexpsArr[i]);
         }
         return regexpsArr;
     }
@@ -186,7 +188,7 @@ public class ReQL {
         int lastIndex = input.indexOf("'", firstIndex);
         String filePath = input.substring(firstIndex, lastIndex);
         if (!filePath.trim().isEmpty() && filePath != null) {
-            schema.put("filePath", filePath);
+            this.filePath = filePath;
             validFile = true;
         }
         return validFile;
@@ -201,18 +203,103 @@ public class ReQL {
     }
 
     public Boolean searchFile(String input) {
+        ArrayList<String> qualifyingLines = new ArrayList<>();
         Boolean validSearch = false;
         if (input != null && !input.trim().isEmpty()) {
-            if (input.matches("(SELECT (((\\w|\\d+(_\\w|\\d+)?)(, )?))+) (FROM (\\w|\\d)+) (WHERE (\\w|\\d)+ (=|>|<|>=|<=) ('.+'))")) {
-                if (schema.get("tableName") == grabFromTableName(input)) {
+            if (input.matches("(SELECT (((\\w+(_\\w+)?)(, )?))+) (FROM (\\w+) (WHERE (\\w+) (=|>|<|>=|<=) ('.+')))")) {
+                if (tableName.equals(grabFromTableName(input))) {
 
-                    File file = new File(schema.get("filePath"));
+                    File file = new File(filePath);
                     if (file != null) {
                         try {
-                            String s = Files.readString(Path.of(file.toURI()));
                             String[] columnsToGrab = grabColumnsToGrab(input);
                             if (columnsToGrab != null) {
-                                validSearch = true;
+                                String s = Files.readString(Path.of(file.toURI()));
+                                Matcher m = Pattern.compile("(WHERE (\\w+) (=|>|<|>=|<=) '(.+)')").matcher(input);
+                                if (m.find()) {
+                                    String whereColumn = m.group(2);
+                                    if (schema.containsKey(whereColumn)) {
+                                        validSearch = true;
+                                        String comparison = m.group(3);
+                                        String compareValue = m.group(4);
+                                        m = Pattern.compile(lineRegex, Pattern.MULTILINE).matcher(s);
+                                        while (m.find()) {
+                                            String columnData = m.group(grabSchemaIndex(whereColumn));
+                                            switch(comparison) {
+                                                case ">":
+                                                    if(columnData.compareTo(compareValue) > 0){
+                                                        qualifyingLines.add(m.group(0));
+                                                    }
+                                                    break;
+                                                case "=":
+                                                    if(columnData.compareTo(compareValue) == 0){
+                                                        qualifyingLines.add(m.group(0));
+                                                    }
+                                                    break;
+                                                case "<":
+                                                    if(columnData.compareTo(compareValue) < 0){
+                                                        qualifyingLines.add(m.group(0));
+                                                    }
+                                                    break;
+                                                case ">=":
+                                                    if(columnData.compareTo(compareValue) >= 0){
+                                                        qualifyingLines.add(m.group(0));
+                                                    }
+                                                    break;
+                                                case "<=":
+                                                    if(columnData.compareTo(compareValue) <= 0){
+                                                        qualifyingLines.add(m.group(0));
+                                                    }
+                                                    break;
+                                                default:
+                                                    validSearch = false;
+                                                    break;
+                                            }
+                                        }
+                                        if(qualifyingLines.size() == 0) {
+                                            System.out.println("I'm sorry, nothing in the file matched your search! Please change your criteria and try again.");
+                                        } else {
+                                            StringBuilder sb = new StringBuilder();
+                                            sb.append("|||");
+                                            ArrayList<Integer> indexes = new ArrayList<Integer>();
+                                            for(String column : columnsToGrab) {
+                                                int numOfSpaces = 40 - column.length();
+                                                for(int i = 0; i < numOfSpaces / 2; i++) {
+                                                    sb.append(" ");
+                                                }
+                                                sb.append(column);
+                                                for(int i = 0; i < numOfSpaces / 2; i++) {
+                                                    sb.append(" ");
+                                                }
+                                                sb.append("|||");
+                                                indexes.add(grabSchemaIndex(column));
+                                            }
+                                            System.out.println(sb.toString());
+                                            for(int i = 0; i < sb.toString().length(); i++) {
+                                                System.out.print("_");
+                                            }
+                                            System.out.println();
+                                            for (String line : qualifyingLines) {
+                                                m = Pattern.compile(lineRegex).matcher(line);
+                                                if(m.find()) {
+                                                    System.out.print("|||");
+                                                    for(Integer index : indexes) {
+                                                        int numOfSpaces = 40 - m.group(index).length();
+                                                        for(int i = 0; i < numOfSpaces / 2; i++) {
+                                                            System.out.print(" ");
+                                                        }
+                                                        System.out.print(m.group(index));
+                                                        for(int i = 0; i < numOfSpaces / 2; i++) {
+                                                            System.out.print(" ");
+                                                        }
+                                                        System.out.print("|||");
+                                                    }
+                                                    System.out.println();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
                             }
                         } catch (IOException e) {
@@ -223,6 +310,17 @@ public class ReQL {
             }
         }
         return validSearch;
+    }
+
+    public int grabSchemaIndex(String key) {
+        int index = 0;
+        Object[] keys = schema.keySet().toArray();
+        for(int i = 0; i < keys.length; i++) {
+            if(keys[i].toString().equals(key)) {
+                index = i + 1;
+            }
+        }
+        return index;
     }
 
     public String grabFromTableName(String input) {
@@ -251,7 +349,6 @@ public class ReQL {
     public void clearAll() {
         schema.clear();
         tableCreated = false;
-        lineRegex = "";
         valid = false;
     }
 }
