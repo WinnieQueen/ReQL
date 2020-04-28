@@ -2,12 +2,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ReQL {
     private HashMap<String, String> schema = new HashMap<>();
-    private File file;
+    private String lineRegex = "";
     private Boolean tableCreated = false;
     public BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private Boolean running = true;
@@ -110,14 +114,14 @@ public class ReQL {
     private void createHelp() {
         System.out.println("CREATE TABLE '<table-name>' (<col-names-list>) : line format /<line-format-regex>/ file '<file-path>");
         System.out.println("\t'table-name' needs one or more alpha numeric characters, always beginning with a letter. It cannot contain underscores, spaces, or special characters");
-        System.out.println("\t'col-names-list' refers to a comma separated list of column names corresponding to regex groupings in the line format expression.");
+        System.out.println("\t'col-names-list' refers to a comma separated list of column names corresponding to regex groupings in the line format expression. Column names can NOT contain 'tableName' or 'filePath'");
         System.out.println("\t'line-format-expression' is the expression applied to each file line. There MUST be an expression for every column name. They MUST be wrapped in parentheses, and CANNOT contain parentheses. MUST start and end with a forward-slash (/)");
         System.out.println("\t'file-path' is the path to the file on disk where the actual data is stored");
     }
 
     private void selectHelp() {
         System.out.println("SELECT <col-names> FROM <table-name> WHERE <criteria>");
-        System.out.println("\t'col-names' refers to a comma separated list of column names to be included in the result set");
+        System.out.println("\t'col-names' refers to a comma separated list of column names to be included in the result set.");
         System.out.println("\t'table-name' refers to the name of the table to query (maps to the file from the create statement)");
         System.out.println("\t'criteria' needs: col-name <comparison> <value>");
         System.out.println("\t\t'comparison' refers to =, <, >, <= or >=");
@@ -127,14 +131,14 @@ public class ReQL {
     public Boolean createSchema(String input) {
         // /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) ([A-Z]+) (\[.*?\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/
         boolean validSchema = false;
-        if (input != null && !input.isEmpty() && !input.contains("\\(") && !input.contains("\\)")) {
+        if (input != null && !input.trim().isEmpty() && !input.contains("\\(") && !input.contains("\\)")) {
             if (input.matches("^CREATE TABLE '(([a-z]|[A-Z])+\\d*)+' \\(\\w+(, \\w+)*\\) : line format \\/.+\\/ file '.+';$")) {
                 String[] regexps = grabRegexps(input);
                 String[] columnNames = grabColumnNames(input);
                 if (regexps.length == columnNames.length) {
-                    validSchema = true;
-                    schema.put("tableName", grabTableName(input));
-                    schema.put("filePath", grabFilePath(input));
+                    if (grabFilePath(input) && grabTableName(input)) {
+                        validSchema = true;
+                    }
                     for (int i = 0; i < regexps.length; i++) {
                         if (columnNames[i] == "tableName" || columnNames[i] == "filePath") {
                             schema.clear();
@@ -150,28 +154,43 @@ public class ReQL {
         return validSchema;
     }
 
-    public String grabTableName(String input) {
+    public Boolean grabTableName(String input) {
+        Boolean validName = false;
         int indexOfLastQuote = input.indexOf('\'', 14);
         String tableName = input.substring(14, indexOfLastQuote);
-        return tableName;
+        if(!tableName.trim().isEmpty() && tableName != null) {
+            schema.put("tableName", tableName);
+            validName = true;
+        }
+        return validName;
     }
 
     public String[] grabRegexps(String input) {
         int firstIndex = input.indexOf("line format /") + 13;
         int lastIndex = input.indexOf("/", firstIndex);
         String regexps = input.substring(firstIndex, lastIndex);
+        lineRegex = regexps;
         String[] regexpsArr = regexps.split("\\)[^\\(]*\\(");
-        for(int i = 0; i < regexpsArr.length; i++) {
+        for (int i = 0; i < regexpsArr.length; i++) {
             regexpsArr[i] = regexpsArr[i].replace(")", "");
+            regexpsArr[i] = regexpsArr[i].replace("(", "");
+            regexpsArr[i] = regexpsArr[i].replace("^", "");
+            regexpsArr[i] = regexpsArr[i].replace("$", "");
+            System.out.println(i + " " + regexpsArr[i]);
         }
         return regexpsArr;
     }
 
-    public String grabFilePath(String input) {
+    public Boolean grabFilePath(String input) {
+        Boolean validFile = false;
         int firstIndex = input.indexOf("file '") + 6;
         int lastIndex = input.indexOf("'", firstIndex);
-        String fileName = input.substring(firstIndex, lastIndex);
-        return fileName;
+        String filePath = input.substring(firstIndex, lastIndex);
+        if (!filePath.trim().isEmpty() && filePath != null) {
+            schema.put("filePath", filePath);
+            validFile = true;
+        }
+        return validFile;
     }
 
     public String[] grabColumnNames(String input) {
@@ -183,7 +202,28 @@ public class ReQL {
     }
 
     public Boolean searchFile(String input) {
-
-        return false;
+        Boolean validSearch = false;
+        if (input != null && !input.trim().isEmpty()) {
+            if (input.matches("(SELECT (((\\w|\\d+(_\\w|\\d+)?)(, )?))+) (FROM (\\w|\\d)+) (WHERE (\\w|\\d)+ (=|>|<|>=|<=) ('.+'))")) {
+                System.out.println(schema.get("filePath"));
+                File file = new File(schema.get("filePath"));
+                if (file != null) {
+                    try {
+                        String s = Files.readString(Path.of(file.toURI()));
+                        System.out.println(s);
+                        System.out.println(s);
+                        Matcher m = Pattern.compile("(?m)^\\s*([^\\(]+)\\([^\\)]*\\|<([^>]*)>[^\\)]*\\)").matcher(s);
+                        while (m.find()) {
+                            System.out.println(m.group(1));
+                            System.out.println(m.group(2));
+                        }
+                        validSearch = true;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return validSearch;
     }
 }

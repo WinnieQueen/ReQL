@@ -54,7 +54,16 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramTest.grabColumnNames">
+  <component name="RunManager" selected="JUnit.ProgramTest.createSchema_shouldReturnTrue">
+    <configuration name="ProgramTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReQL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProgramTest.createSchema_shouldReturnTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
@@ -75,16 +84,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.grabFilePath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ReQL" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="grabFilePath" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ProgramTest.grabRegexps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
@@ -95,11 +94,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.grabTableName_shouldReturnMyyyyyTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramTest.searchFile_shouldReturnTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="grabTableName_shouldReturnMyyyyyTable" />
+      <option name="METHOD_NAME" value="searchFile_shouldReturnTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -107,11 +106,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProgramTest.grabColumnNames" />
-        <item itemvalue="JUnit.ProgramTest.grabFilePath" />
-        <item itemvalue="JUnit.ProgramTest.grabRegexps" />
         <item itemvalue="JUnit.ProgramTest.createSchema_shouldReturnTrue" />
-        <item itemvalue="JUnit.ProgramTest.grabTableName_shouldReturnMyyyyyTable" />
+        <item itemvalue="JUnit.ProgramTest.searchFile_shouldReturnTrue" />
+        <item itemvalue="JUnit.ProgramTest" />
+        <item itemvalue="JUnit.ProgramTest.grabRegexps" />
+        <item itemvalue="JUnit.ProgramTest.grabColumnNames" />
       </list>
     </recent_temporary>
   </component>
@@ -133,26 +132,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588006303268" />
+    <state x="230" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588070339111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="230" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588070339111" />
     <state x="99" y="117" key="CommitChangelistDialog2" timestamp="1588005618574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588005618574" />
-    <state width="914" height="216" key="GridCell.Tab.0.bottom" timestamp="1588064481622">
+    <state width="901" height="216" key="GridCell.Tab.0.bottom" timestamp="1588071037221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
-    <state width="914" height="216" key="GridCell.Tab.0.center" timestamp="1588064481622">
+    <state width="901" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
+    <state width="901" height="216" key="GridCell.Tab.0.center" timestamp="1588071037221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
-    <state width="914" height="216" key="GridCell.Tab.0.left" timestamp="1588064481622">
+    <state width="901" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
+    <state width="901" height="216" key="GridCell.Tab.0.left" timestamp="1588071037221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
-    <state width="914" height="216" key="GridCell.Tab.0.right" timestamp="1588064481622">
+    <state width="901" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
+    <state width="901" height="216" key="GridCell.Tab.0.right" timestamp="1588071037221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588064481622" />
+    <state width="901" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1588005359521">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -29,7 +29,7 @@ fontsize=10
     <id>UMLClass</id>
     <coordinates>
       <x>430</x>
-      <y>60</y>
+      <y>70</y>
       <w>320</w>
       <h>320</h>
     </coordinates>
@@ -49,9 +49,9 @@ fontsize=10
 + promptForInput() : String
 + createSchema(input : String) : Boolean
 
-+ grabTableName(input : String) : String
++ grabTableName(input : String) : Boolean
 + grabRegexps(input : String) : String[]
-+ grabFilePath(input : String) : String
++ grabFilePath(input : String) : Boolean
 + grabColumnNames(input : String) : String[]
 
 + searchFile(input : String) : Boolean
@@ -64,7 +64,7 @@ fontsize=10
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>60</y>
+      <y>70</y>
       <w>320</w>
       <h>320</h>
     </coordinates>
@@ -79,7 +79,7 @@ _+ main(args : String[]) : void_
     <id>Relation</id>
     <coordinates>
       <x>310</x>
-      <y>190</y>
+      <y>200</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
