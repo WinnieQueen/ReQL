@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,7 +70,7 @@ public class ReQL {
                 input = reader.readLine();
                 if (input.equals("y")) {
                     valid = true;
-                    tableCreated = false;
+                    clearAll();
                 } else {
                     System.out.println("Cancelling override.");
                 }
@@ -158,7 +157,7 @@ public class ReQL {
         Boolean validName = false;
         int indexOfLastQuote = input.indexOf('\'', 14);
         String tableName = input.substring(14, indexOfLastQuote);
-        if(!tableName.trim().isEmpty() && tableName != null) {
+        if (!tableName.trim().isEmpty() && tableName != null) {
             schema.put("tableName", tableName);
             validName = true;
         }
@@ -205,25 +204,54 @@ public class ReQL {
         Boolean validSearch = false;
         if (input != null && !input.trim().isEmpty()) {
             if (input.matches("(SELECT (((\\w|\\d+(_\\w|\\d+)?)(, )?))+) (FROM (\\w|\\d)+) (WHERE (\\w|\\d)+ (=|>|<|>=|<=) ('.+'))")) {
-                System.out.println(schema.get("filePath"));
-                File file = new File(schema.get("filePath"));
-                if (file != null) {
-                    try {
-                        String s = Files.readString(Path.of(file.toURI()));
-                        System.out.println(s);
-                        System.out.println(s);
-                        Matcher m = Pattern.compile("(?m)^\\s*([^\\(]+)\\([^\\)]*\\|<([^>]*)>[^\\)]*\\)").matcher(s);
-                        while (m.find()) {
-                            System.out.println(m.group(1));
-                            System.out.println(m.group(2));
+                if (schema.get("tableName") == grabFromTableName(input)) {
+
+                    File file = new File(schema.get("filePath"));
+                    if (file != null) {
+                        try {
+                            String s = Files.readString(Path.of(file.toURI()));
+                            String[] columnsToGrab = grabColumnsToGrab(input);
+                            if (columnsToGrab != null) {
+                                validSearch = true;
+
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                        validSearch = true;
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
                 }
             }
         }
         return validSearch;
+    }
+
+    public String grabFromTableName(String input) {
+        String tableName = "";
+        Matcher m = Pattern.compile("(FROM (\\w|\\d)+)").matcher(input);
+        if (m.find()) {
+            tableName = m.group(1).replace("FROM ", "");
+        }
+        return tableName;
+    }
+
+    public String[] grabColumnsToGrab(String input) {
+        String[] columnsToFind = null;
+        Matcher m = Pattern.compile("(SELECT (((\\w|\\d+(_\\w|\\d+)?)(, )?))+)").matcher(input);
+        if (m.find()) {
+            String columns = m.group(1);
+            columns = columns.replace("SELECT ", "");
+            String[] columnsArr = columns.split(", ");
+            if (columnsArr.length > 0) {
+                columnsToFind = columnsArr;
+            }
+        }
+        return columnsToFind;
+    }
+
+    public void clearAll() {
+        schema.clear();
+        tableCreated = false;
+        lineRegex = "";
+        valid = false;
     }
 }

@@ -31,7 +31,7 @@ fontsize=10
       <x>430</x>
       <y>70</y>
       <w>320</w>
-      <h>320</h>
+      <h>390</h>
     </coordinates>
     <panel_attributes>ReQL
 -
@@ -53,6 +53,10 @@ fontsize=10
 + grabRegexps(input : String) : String[]
 + grabFilePath(input : String) : Boolean
 + grabColumnNames(input : String) : String[]
+
++ grabColumnsToGrab(input : String) : String[]
++ clearAll() : void
++ grabFromTableName(input : String) : String
 
 + searchFile(input : String) : Boolean
 

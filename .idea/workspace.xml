@@ -16,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -54,7 +54,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProgramTest.createSchema_shouldReturnTrue">
+  <component name="RunManager" selected="JUnit.ProgramTest.grabColumnsToGrab">
     <configuration name="ProgramTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
@@ -74,21 +74,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.grabColumnNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramTest.grabColumnsToGrab" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="grabColumnNames" />
+      <option name="METHOD_NAME" value="grabColumnsToGrab" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProgramTest.grabRegexps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgramTest.grabFromTableName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReQL" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProgramTest" />
-      <option name="METHOD_NAME" value="grabRegexps" />
+      <option name="METHOD_NAME" value="grabFromTableName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,11 +106,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProgramTest.createSchema_shouldReturnTrue" />
+        <item itemvalue="JUnit.ProgramTest.grabColumnsToGrab" />
+        <item itemvalue="JUnit.ProgramTest.grabFromTableName" />
         <item itemvalue="JUnit.ProgramTest.searchFile_shouldReturnTrue" />
+        <item itemvalue="JUnit.ProgramTest.createSchema_shouldReturnTrue" />
         <item itemvalue="JUnit.ProgramTest" />
-        <item itemvalue="JUnit.ProgramTest.grabRegexps" />
-        <item itemvalue="JUnit.ProgramTest.grabColumnNames" />
       </list>
     </recent_temporary>
   </component>
@@ -140,22 +140,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="99" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588005618574" />
-    <state width="901" height="216" key="GridCell.Tab.0.bottom" timestamp="1588071037221">
+    <state width="901" height="216" key="GridCell.Tab.0.bottom" timestamp="1588073219631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="901" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
-    <state width="901" height="216" key="GridCell.Tab.0.center" timestamp="1588071037221">
+    <state width="901" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588073219631" />
+    <state width="901" height="216" key="GridCell.Tab.0.center" timestamp="1588073219631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="901" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
-    <state width="901" height="216" key="GridCell.Tab.0.left" timestamp="1588071037221">
+    <state width="901" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588073219631" />
+    <state width="901" height="216" key="GridCell.Tab.0.left" timestamp="1588073219631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="901" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
-    <state width="901" height="216" key="GridCell.Tab.0.right" timestamp="1588071037221">
+    <state width="901" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588073219631" />
+    <state width="901" height="216" key="GridCell.Tab.0.right" timestamp="1588073219631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="901" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588071037221" />
+    <state width="901" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588073219631" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1588005359521">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -172,10 +172,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588005359521" />
-    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587568002923">
+    <state x="963" y="184" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588072730050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="251" y="241" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587568002923" />
+    <state x="963" y="184" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588072730050" />
     <state x="862" y="-11" width="812" height="782" maximized="true" key="dock-window-1" timestamp="1587891380368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -6,13 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
-    private ReQL reQL = new ReQL();
+    ReQL reQL = new ReQL();
+
+    @BeforeEach
+    void setUp() {
+        reQL.clearAll();
+    }
 
     @Test
     void promptForInput_shouldReturnSpecial() {
         reQL.reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream("Help 1".getBytes())));
         assertEquals("SPECIAL", reQL.promptForInput());
     }
+
 
     @Test
     void promptForInput_shouldReturnSpecial2() {
@@ -57,7 +64,7 @@ class ProgramTest {
         String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
         String[] actual = reQL.grabRegexps(toPassIn);
         assertEquals(expected.length, actual.length);
-        for(int i = 0; i < expected.length; i++) {
+        for (int i = 0; i < expected.length; i++) {
             assertEquals(expected[i], actual[i]);
         }
     }
@@ -75,7 +82,7 @@ class ProgramTest {
         String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip, username, msg) : line format /^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$/ file 'access_log.txt';";
         String[] actual = reQL.grabColumnNames(toPassIn);
         assertEquals(expected.length, actual.length);
-        for(int i = 0; i < expected.length; i++) {
+        for (int i = 0; i < expected.length; i++) {
             assertEquals(expected[i], actual[i]);
         }
     }
@@ -110,9 +117,8 @@ class ProgramTest {
 
     @Test
     void searchFile_shouldReturnTrue() {
-        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format ^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$ file 'access_log.txt';";
-        reQL.grabFilePath(toPassIn);
-        reQL.searchFile("SELECT date, time, src_ip FROM mylog WHERE date >= '2019-01-01'");
+        setup();
+        assertEquals(true, reQL.searchFile("SELECT date, time, src_ip FROM mylog WHERE date >= '2019-01-01'"));
     }
 
     @Test
@@ -125,5 +131,32 @@ class ProgramTest {
 
     @Test
     void checkForSpecialInput_shouldReturnFalse() {
+    }
+
+    @Test
+    void grabFromTableName() {
+        setup();
+        String toPassIn = "SELECT date, time, src_ip FROM mylog WHERE date >= '2019-01-01'";
+        String expected = "mylog";
+        String actual = reQL.grabFromTableName(toPassIn);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void grabColumnsToGrab() {
+        setup();
+        String toPassIn = "SELECT date, time, src_ip FROM mylog WHERE date >= '2019-01-01'";
+        String[] expected = {"date", "time", "src_ip"};
+        String[] actual = reQL.grabColumnsToGrab(toPassIn);
+        assertEquals(expected.length, actual.length);
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], actual[i]);
+        }
+    }
+
+    void setup() {
+        String toPassIn = "CREATE TABLE 'MyyyyyTable' (date, time, log_level, src_ip) : line format ^([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2}) (\\[.*?\\]) ([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.{1,3}) (.+) : (.*)$ file 'access_log.txt';";
+        reQL.grabFilePath(toPassIn);
+        reQL.grabTableName(toPassIn);
     }
 }
